@@ -1,0 +1,8 @@
+Username:
+2
+Salt:
+4
+g:
+2
+N:
+3

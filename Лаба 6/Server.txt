@@ -1,0 +1,10 @@
+Username:
+2
+Salt:
+4
+Verifier:
+1
+g:
+2
+N:
+3
