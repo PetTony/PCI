@@ -42,7 +42,7 @@ void decrypt (int key){
     int tmp, digit;
     char point;
     
-//  частота символов в анализируемом тексте
+//  С‡Р°СЃС‚РѕС‚Р° СЃРёРјРІРѕР»РѕРІ РІ Р°РЅР°Р»РёР·РёСЂСѓРµРјРѕРј С‚РµРєСЃС‚Рµ
     point=getc(fp3);
     while (!feof(fp3)){
     	if (point>='A' && point<='Z'){
@@ -56,9 +56,9 @@ void decrypt (int key){
         	point = getc(fp3);
         	counter++;
     }
-    printf("счётчик: %d\n", counter);    
+    printf("СЃС‡С‘С‚С‡РёРє: %d\n", counter);    
     counter=0;
-  //  частота символов в зашифрованном тексте
+  //  С‡Р°СЃС‚РѕС‚Р° СЃРёРјРІРѕР»РѕРІ РІ Р·Р°С€РёС„СЂРѕРІР°РЅРЅРѕРј С‚РµРєСЃС‚Рµ
     point=getc(fp2);
     while (!feof(fp2)){
     	if (point>='A' && point<='Z'){
@@ -73,9 +73,9 @@ void decrypt (int key){
         	point = getc(fp2);
         	counter++;
     }  
-    printf("счётчик: %d\n", counter);  
+    printf("СЃС‡С‘С‚С‡РёРє: %d\n", counter);  
     counter=0;
-    // дозаполнение массивов
+    // РґРѕР·Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІРѕРІ
     flag=65;
     while(flag<=90){
     	arrayEncrypt[1][flag]=flag;
@@ -86,7 +86,7 @@ void decrypt (int key){
     printf("\n");
     fclose (fp2);
     
-    // сортировка arrayAnalyze 
+    // СЃРѕСЂС‚РёСЂРѕРІРєР° arrayAnalyze 
     
     bool noSwap;
 	for (int i = 90; i >= 65; i--){
@@ -106,7 +106,7 @@ void decrypt (int key){
       	  break;
 		}
 	counter=0;	
-	printf("Отсортированный массив\n");
+	printf("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ\n");
     flag=65;
     while(flag<=90){
     	printf("%d ", flag);
@@ -116,8 +116,8 @@ void decrypt (int key){
     	flag++;
     }
     printf("\n");
-    printf("Общее количество символов: %d\n", counter);
-    // сортировка arrayEncrypt
+    printf("РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ: %d\n", counter);
+    // СЃРѕСЂС‚РёСЂРѕРІРєР° arrayEncrypt
     for (int i = 90; i >= 65; i--){
     noSwap = 1;
     for (int j = 65; j <= i; j++)	{
@@ -135,7 +135,7 @@ void decrypt (int key){
       	break;
 	}
 	counter=0;	
-	printf("Отсортированный массив\n");
+	printf("РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ\n");
     flag=65;
     while(flag<=90){
     	printf("%d ", flag);
@@ -145,8 +145,8 @@ void decrypt (int key){
     	flag++;
     }
     printf("\n");
-     printf("Общее количество символов: %d\n", counter);
-    // выходной файл
+     printf("РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ: %d\n", counter);
+    // РІС‹С…РѕРґРЅРѕР№ С„Р°Р№Р»
     fp2=fopen("encrypt.txt", "r");
     point=getc(fp2);
     while (!feof(fp2)){
@@ -175,7 +175,7 @@ int main (){
 	setlocale(LC_ALL, "rus");
 	int key=0;
 	while ((key<=0) || (key>=26)){
-		printf("Введите целочисленный ключ:");
+		printf("Р’РІРµРґРёС‚Рµ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Р№ РєР»СЋС‡:");
 		scanf("%d", &key);
 	}
 		encrypt (key);
