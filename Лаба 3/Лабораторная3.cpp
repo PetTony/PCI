@@ -1,15 +1,16 @@
-/*  1)Глобальные открытые элементы:
-		n-случаное простое число
+/*  1)Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РѕС‚РєСЂС‹С‚С‹Рµ СЌР»РµРјРµРЅС‚С‹:
+		n-СЃР»СѓС‡Р°РЅРѕРµ РїСЂРѕСЃС‚РѕРµ С‡РёСЃР»Рѕ
 		g<n
-	2)Абонентом А вычисляется:
-		выбирается секретное число Xa<n
-		вычисляется открытое значение Ya=g^(Xa) mod n
-	3)Абонентом B вычисляется:
-		выбирается секретное число Xb<n
-		вычисляется открытое значение Yb=g^(Xb) mod 
-	4) Вычисление ключей
-		вычисляется секретный ключ абонентом A: K=Yb^(Xa) mod n
-		вычисляется секретный ключ абонентом B: K=Ya^(Xb) mod n
+	2)РђР±РѕРЅРµРЅС‚РѕРј Рђ РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ:
+		РІС‹Р±РёСЂР°РµС‚СЃСЏ СЃРµРєСЂРµС‚РЅРѕРµ С‡РёСЃР»Рѕ Xa<n
+		РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ РѕС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ Ya=g^(Xa) mod n
+	3)РђР±РѕРЅРµРЅС‚РѕРј B РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ:
+		РІС‹Р±РёСЂР°РµС‚СЃСЏ СЃРµРєСЂРµС‚РЅРѕРµ С‡РёСЃР»Рѕ Xb<n
+		РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ РѕС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ Yb=g^(Xb) mod 
+	4) Р’С‹С‡РёСЃР»РµРЅРёРµ РєР»СЋС‡РµР№
+		РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ СЃРµРєСЂРµС‚РЅС‹Р№ РєР»СЋС‡ Р°Р±РѕРЅРµРЅС‚РѕРј A: K=Yb^(Xa) mod n
+		РІС‹С‡РёСЃР»СЏРµС‚СЃСЏ СЃРµРєСЂРµС‚РЅС‹Р№ РєР»СЋС‡ Р°Р±РѕРЅРµРЅС‚РѕРј B: K=Ya^(Xb) mod n
+
 */	
 #include<stdio.h>
 #include<locale.h>
@@ -25,7 +26,7 @@ int abonentTwo(unsigned long long int n, unsigned long long int g, int publicYa)
 		FILE *fp1;
 		fp1=fopen("log.txt", "a");
 		while(flag==0){
-			printf("Введите секретное число Xb:\n");
+			printf("Р’РІРµРґРёС‚Рµ СЃРµРєСЂРµС‚РЅРѕРµ С‡РёСЃР»Рѕ Xb:\n");
 			scanf("%llu",&secretXb);
 			if(secretXb<n){
 				flag=1;
@@ -35,9 +36,9 @@ int abonentTwo(unsigned long long int n, unsigned long long int g, int publicYa)
 		publicYb=publicYb % n;
 		key=pow(publicYa,secretXb);
 		key=key % n;
-		printf("Переданное значение от 1абонента Ya: %llu\n",publicYa);
-		printf("ключ: %llu\n",key);
-	//	fprintf(fp1, "Ключ B: %llu\n", key);
+		printf("РџРµСЂРµРґР°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РѕС‚ 1Р°Р±РѕРЅРµРЅС‚Р° Ya: %llu\n",publicYa);
+		printf("РєР»СЋС‡: %llu\n",key);
+	//	fprintf(fp1, "РљР»СЋС‡ B: %llu\n", key);
 		return(publicYb);
 };
 
@@ -47,7 +48,7 @@ int abonentOne(unsigned long long int n, unsigned long long int g, int publicYb)
 		FILE *fp1;
 		fp1=fopen("log.txt", "w");
 		while(flag==0){
-			printf("Введите секретное число Xa:\n");
+			printf("Р’РІРµРґРёС‚Рµ СЃРµРєСЂРµС‚РЅРѕРµ С‡РёСЃР»Рѕ Xa:\n");
 			scanf("%llu",&secretXa);
 			if(secretXa<n){
 				flag=1;
@@ -55,15 +56,15 @@ int abonentOne(unsigned long long int n, unsigned long long int g, int publicYb)
 		}
 		publicYa=pow(g,secretXa);
 		publicYa=publicYa%n;
-		fprintf(fp1, "Открытое значение n: %llu\nОткрытое значение g: %llu\n",n,g);
-		fprintf(fp1, "Открытое значение public Ya: %llu\n", publicYa);
-		publicYb=abonentTwo(n,g,publicYa);// вычисленное открытое значение передаём второму абоненту и ждём ответ
-		fprintf(fp1, "Открытое значение public Yb: %llu\n", publicYb);
-		printf("Переданное значение от 2абонента Yb: %llu\n",publicYb);
+		fprintf(fp1, "РћС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ n: %llu\nРћС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ g: %llu\n",n,g);
+		fprintf(fp1, "РћС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ public Ya: %llu\n", publicYa);
+		publicYb=abonentTwo(n,g,publicYa);// РІС‹С‡РёСЃР»РµРЅРЅРѕРµ РѕС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРґР°С‘Рј РІС‚РѕСЂРѕРјСѓ Р°Р±РѕРЅРµРЅС‚Сѓ Рё Р¶РґС‘Рј РѕС‚РІРµС‚
+		fprintf(fp1, "РћС‚РєСЂС‹С‚РѕРµ Р·РЅР°С‡РµРЅРёРµ public Yb: %llu\n", publicYb);
+		printf("РџРµСЂРµРґР°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РѕС‚ 2Р°Р±РѕРЅРµРЅС‚Р° Yb: %llu\n",publicYb);
 		key=pow(publicYb,secretXa);
 		key=key % n;
-	//	fprintf(fp1, "Ключ А: %llu\n", key);
-		printf("ключ: %llu\n",key);
+	//	fprintf(fp1, "РљР»СЋС‡ Рђ: %llu\n", key);
+		printf("РєР»СЋС‡: %llu\n",key);
 		fclose (fp1);
 		return 0;
 };
@@ -71,7 +72,7 @@ int abonentOne(unsigned long long int n, unsigned long long int g, int publicYb)
 int main (){
 	setlocale(LC_ALL, "rus");
 	unsigned long long int n,m,i,flag,g;
-	printf("Введите случайное простое число n:\n");
+	printf("Р’РІРµРґРёС‚Рµ СЃР»СѓС‡Р°Р№РЅРѕРµ РїСЂРѕСЃС‚РѕРµ С‡РёСЃР»Рѕ n:\n");
 	scanf("%llu",&n);
 	m=n/3;	
 	i=2;
@@ -81,13 +82,13 @@ int main (){
 		i++;
 	}
 	if(flag==0||n==4){
-		printf("Число составное\n");
+		printf("Р§РёСЃР»Рѕ СЃРѕСЃС‚Р°РІРЅРѕРµ\n");
 	}
 	else{
-		printf("Число простое\n");
+		printf("Р§РёСЃР»Рѕ РїСЂРѕСЃС‚РѕРµ\n");
 		flag=0;
 		while(flag!=1){
-			printf("Введите g:\n");
+			printf("Р’РІРµРґРёС‚Рµ g:\n");
 			scanf("%llu",&g);
 			if(g<n){
 				flag=1;
@@ -98,6 +99,7 @@ int main (){
 	getchar ();
 	return 0;
 }
+
 
 
 
