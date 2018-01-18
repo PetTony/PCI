@@ -6,7 +6,7 @@
 #include<ctype.h>
 #include<math.h>
 
-// функция pow
+// С„СѓРЅРєС†РёСЏ pow
 unsigned long long int fpow(int osn, int degree){
 	unsigned long long int saveosn,deg;
 	for(saveosn=osn,deg=1;deg<degree;deg++){
@@ -15,7 +15,7 @@ unsigned long long int fpow(int osn, int degree){
 	return saveosn;
 }
 
-// функция ChToInt
+// С„СѓРЅРєС†РёСЏ ChToInt
 int CharToInt(int Symbol){
 	switch (Symbol){
    		case 48:{
@@ -65,12 +65,12 @@ int CharToInt(int Symbol){
 	return Symbol;
 }
 
-// функция хеширования
+// С„СѓРЅРєС†РёСЏ С…РµС€РёСЂРѕРІР°РЅРёСЏ
 int Hash(int one, int two, int three, int four, int five, int six){
 	return (one+two+three+four+five)%10+1;
 }
 
-// функция определения простоты числа
+// С„СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїСЂРѕСЃС‚РѕС‚С‹ С‡РёСЃР»Р°
 int Easy(unsigned long long int Per){
 	unsigned long long int m,i,flag,res;
 		m=Per/3;	
@@ -89,7 +89,7 @@ int Easy(unsigned long long int Per){
 	return (res);
 }
 
-// проверка взаимно простого числа
+// РїСЂРѕРІРµСЂРєР° РІР·Р°РёРјРЅРѕ РїСЂРѕСЃС‚РѕРіРѕ С‡РёСЃР»Р°
 int VzEasy(unsigned long long int b){
 	int mod1=0, mod2=1, sch=0,tmpg=2,j=2;
 	while(sch!=1&&tmpg<b){
@@ -108,7 +108,7 @@ int VzEasy(unsigned long long int b){
 		return (tmpg);
 	}
 
-//сервер
+//СЃРµСЂРІРµСЂ
 unsigned long long int Server(int username, int salt, int pv, int P4, int P5, int P6, int P7){
 	unsigned long long int rez, flag, B, b, k=3, us, Ks,Ss,Ns,gs;
 	char point;
@@ -118,13 +118,13 @@ unsigned long long int Server(int username, int salt, int pv, int P4, int P5, in
 			fp1=fopen("Server.txt", "w");
 			if (P7==0){
 				fprintf(fp1,"Username:\n%d\nSalt:\n%d\nVerifier:\n%d\ng:\n%d\nN:\n%d\n",username,salt,pv,P5, P6);
-				printf("Пользователь зарегистрирован!\n");
+				printf("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!\n");
 				fclose (fp1);
    				return (0);
 				break;
 			}
 		}
-		// начало аутентификации
+		// РЅР°С‡Р°Р»Рѕ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё
 		case 1:{
 			if (P5!=0){
 				FILE *fp1;
@@ -177,13 +177,13 @@ unsigned long long int Server(int username, int salt, int pv, int P4, int P5, in
 					point=getc(fp1);
 				
 			}       
-			// получение B,b
-			printf("Введите произвольное числовое значение b: \n");
+			// РїРѕР»СѓС‡РµРЅРёРµ B,b
+			printf("Р’РІРµРґРёС‚Рµ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРµ С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ b: \n");
 			scanf("%d",&b);	
 			B=k*pv; 
 			B+=fpow(gs,b);
 		//	printf("B=%d\n",B);
-		//	printf("А=%d\n",P5);
+		//	printf("Рђ=%d\n",P5);
 			us=Hash(P5,B,0,0,0,0);
 		//	printf("us=%d\n",us);
 			if (us!=0){
@@ -207,7 +207,7 @@ unsigned long long int Server(int username, int salt, int pv, int P4, int P5, in
 			//	Ks=Hash(Ss,0,0,0,0,0);
 			//	printf("Ks%d\n", Ks);
 				int Ms=0,Htemps;
-		//		printf("Разбор\n");
+		//		printf("Р Р°Р·Р±РѕСЂ\n");
 		//		printf("Ns:%d\n",Ns);
 		//			printf("gs:%d\n",gs);
 		//			printf("username:%d\n",username);
@@ -230,11 +230,11 @@ unsigned long long int Server(int username, int salt, int pv, int P4, int P5, in
 				return B;
 			}
 			else
-				printf("Ошибка, процесс аутентификации прерван1!!!\n");
+				printf("РћС€РёР±РєР°, РїСЂРѕС†РµСЃСЃ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё РїСЂРµСЂРІР°РЅ1!!!\n");
 				return (-4);
 			}
 			else{
-				printf("Ошибка, процесс аутентификации прерван2!!!\n");
+				printf("РћС€РёР±РєР°, РїСЂРѕС†РµСЃСЃ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё РїСЂРµСЂРІР°РЅ2!!!\n");
 				return (-5);
 			}
 			break;
@@ -324,21 +324,21 @@ unsigned long long int Server(int username, int salt, int pv, int P4, int P5, in
 	}
    }
     
-// клиент
+// РєР»РёРµРЅС‚
 int Client(int Var1, int Var2){
 	unsigned long long int g,q,N=0;
 	unsigned long long int usl,fl=0,fl1=0,S,tmp1,Kc;
 	unsigned long long int I,p,x,v,a,s,A,err,Bc,uc,pass,errorc;
 	FILE *fp1;
-	// регистрация пользователя
+	// СЂРµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	usl=0;
 	while(usl==0){
-		printf("Для регистрации пользователя нажмите 1, для аутентификации - 2, для  выхода - 3\n");
+		printf("Р”Р»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР°Р¶РјРёС‚Рµ 1, РґР»СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё - 2, РґР»СЏ  РІС‹С…РѕРґР° - 3\n");
 		scanf("%d",&fl1);
 		switch (fl1){
 			case 1:{
-				// выбор q и определение N
-				printf("Введите число q:\n");
+				// РІС‹Р±РѕСЂ q Рё РѕРїСЂРµРґРµР»РµРЅРёРµ N
+				printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ q:\n");
 				while(fl!=1){
 					scanf("%llu",&q);
 					usl=Easy(q);
@@ -347,33 +347,33 @@ int Client(int Var1, int Var2){
 						usl=Easy(N);
 						if(usl==1){
 							fl=1;
-							printf("Число N: %llu\n", N);
+							printf("Р§РёСЃР»Рѕ N: %llu\n", N);
 						}
 						else
-							printf("Введите другое число q:\n");
+							printf("Р’РІРµРґРёС‚Рµ РґСЂСѓРіРѕРµ С‡РёСЃР»Рѕ q:\n");
 							usl=1;
 					}
 					if (usl!=1){
-						printf("Введите другое число q:\n");
+						printf("Р’РІРµРґРёС‚Рµ РґСЂСѓРіРѕРµ С‡РёСЃР»Рѕ q:\n");
 					}
 				}
-				// генератор мультипликативной группы g
+				// РіРµРЅРµСЂР°С‚РѕСЂ РјСѓР»СЊС‚РёРїР»РёРєР°С‚РёРІРЅРѕР№ РіСЂСѓРїРїС‹ g
 				g=VzEasy(N);
-				printf("Генератор мультипликативной группы g: %llu\n", g);
-				// параметр-множитель (srp-6 - k=3)
+				printf("Р“РµРЅРµСЂР°С‚РѕСЂ РјСѓР»СЊС‚РёРїР»РёРєР°С‚РёРІРЅРѕР№ РіСЂСѓРїРїС‹ g: %llu\n", g);
+				// РїР°СЂР°РјРµС‚СЂ-РјРЅРѕР¶РёС‚РµР»СЊ (srp-6 - k=3)
 				int k=3;
-				// Теперь регистрация нового пользователя
-				printf("Введите числовой идентификатор пользователя: \n");
+				// РўРµРїРµСЂСЊ СЂРµРіРёСЃС‚СЂР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+				printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»РѕРІРѕР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ: \n");
 				scanf("%d",&I);
-				printf("Введите числовой пароль: \n");
+				printf("Р’РІРµРґРёС‚Рµ С‡РёСЃР»РѕРІРѕР№ РїР°СЂРѕР»СЊ: \n");
 				scanf("%d",&p);
-				// генерация соли
-				printf("Введите произвольную числовую соль: \n");
+				// РіРµРЅРµСЂР°С†РёСЏ СЃРѕР»Рё
+				printf("Р’РІРµРґРёС‚Рµ РїСЂРѕРёР·РІРѕР»СЊРЅСѓСЋ С‡РёСЃР»РѕРІСѓСЋ СЃРѕР»СЊ: \n");
 				scanf("%d",&s);
 				x=Hash(s,p,0,0,0,0);
 				v=fpow(g,x);
 				v%=N;
-				// хранилище клиента
+				// С…СЂР°РЅРёР»РёС‰Рµ РєР»РёРµРЅС‚Р°
 				fp1=fopen("Client.txt", "w");
 				fprintf(fp1,"Username:\n%d\nSalt:\n%d\ng:\n%d\nN:\n%d\n",I,s,g,N);
 				fclose (fp1);
@@ -381,9 +381,9 @@ int Client(int Var1, int Var2){
 				break;
 			}
 			case 2:{
-				printf("Введите произвольное числовое значение a: \n");
+				printf("Р’РІРµРґРёС‚Рµ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРµ С‡РёСЃР»РѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ a: \n");
 				scanf("%d",&a);
-				// нужно получить g и N
+				// РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ g Рё N
 				int intpointcl,temppointcl,circlecl=0,flagcl,I;
 				char pointcl;
 				fp1=fopen("Client.txt", "r");
@@ -448,9 +448,9 @@ int Client(int Var1, int Var2){
 					errorc=-3;
 				}
 				if (errorc!=-3&&errorc!=-2&&errorc!=-1){
-					printf("Введите свой пароль: \n");
+					printf("Р’РІРµРґРёС‚Рµ СЃРІРѕР№ РїР°СЂРѕР»СЊ: \n");
 					scanf("%d",&pass);
-					printf("Пароль:%d\n", pass);
+					printf("РџР°СЂРѕР»СЊ:%d\n", pass);
 					x=Hash(s,pass,0,0,0,0);
 				//	printf("s:%d\n",s);
 				//	printf("Hashx:%d\n",x);
@@ -475,7 +475,7 @@ int Client(int Var1, int Var2){
 					printf("Kc:%d\n",Kc);
 					int Mc=0;
 					int Htemp;
-				/*	printf("Подробный разбор\n");
+				/*	printf("РџРѕРґСЂРѕР±РЅС‹Р№ СЂР°Р·Р±РѕСЂ\n");
 					printf("N:%d\n",N);
 					printf("g:%d\n",g);
 					printf("I:%d\n",I);
@@ -498,14 +498,14 @@ int Client(int Var1, int Var2){
 					printf("Rc:%d\n",Rc);
 				//	printf("Msc:%d\n",Msc);
 					if (Rcs==Rc){
-					printf("Успешная аутентификация!!!");
+					printf("РЈСЃРїРµС€РЅР°СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ!!!");
 				}
 				else{
 					printf("Failed!!!");
 				}
 					}
 					else{
-						printf("Код ошибки: %d\n", errorc);
+						printf("РљРѕРґ РѕС€РёР±РєРё: %d\n", errorc);
 					}
 			}
 			case 3:{
@@ -513,7 +513,7 @@ int Client(int Var1, int Var2){
 				break;
 			}
 			default:{
-				printf("Некорректный ввод!!!\n");
+				printf("РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ!!!\n");
 				break;
 			}
 		}
